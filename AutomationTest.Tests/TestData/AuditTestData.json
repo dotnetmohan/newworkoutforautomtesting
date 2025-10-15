@@ -1,0 +1,22 @@
+{
+  "validRequest": {
+    "billingId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "unitId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "reference": "test",
+    "codeId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "effectiveWindow": {
+      "start": "2025-09-25",
+      "end": "2025-09-25"
+    }
+  },
+  "invalidRequest": {
+    "billingId": "",
+    "unitId": "",
+    "reference": "",
+    "codeId": "",
+    "effectiveWindow": {
+      "start": "",
+      "end": ""
+    }
+  }
+}
