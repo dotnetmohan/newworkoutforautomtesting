@@ -3,17 +3,17 @@ Feature: Products API Testing
     I want to test the Products API endpoints
     So that I can ensure they work correctly
 
-Scenario: Get all products
+Scenario: 001 - Get all products
     When I send a GET request to "/products"
     Then the response status code should be 200
     And the response should contain a list of products
 
-Scenario: Get a specific product
+Scenario: 002 - Get a specific product
     When I send a GET request to "/products/1"
     Then the response status code should be 200
     And the response should contain product details
 
-Scenario: Search for products
+Scenario: 003 - Search for products
     When I send a GET request to "/products/search?q=phone"
     Then the response status code should be 200
     And the response should contain matching products

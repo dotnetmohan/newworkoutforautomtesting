@@ -134,15 +134,15 @@ namespace AutomationTest.Tests.Features
             await this.TestTearDownAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="Get all products")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="001 - Get all products")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Products API Testing")]
-        [global::Xunit.TraitAttribute("Description", "Get all products")]
-        public async global::System.Threading.Tasks.Task GetAllProducts()
+        [global::Xunit.TraitAttribute("Description", "001 - Get all products")]
+        public async global::System.Threading.Tasks.Task _001_GetAllProducts()
         {
             string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "0";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Get all products", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("001 - Get all products", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 6
@@ -168,15 +168,15 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="Get a specific product")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="002 - Get a specific product")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Products API Testing")]
-        [global::Xunit.TraitAttribute("Description", "Get a specific product")]
-        public async global::System.Threading.Tasks.Task GetASpecificProduct()
+        [global::Xunit.TraitAttribute("Description", "002 - Get a specific product")]
+        public async global::System.Threading.Tasks.Task _002_GetASpecificProduct()
         {
             string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "1";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Get a specific product", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("002 - Get a specific product", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 11
@@ -202,15 +202,15 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="Search for products")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="003 - Search for products")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Products API Testing")]
-        [global::Xunit.TraitAttribute("Description", "Search for products")]
-        public async global::System.Threading.Tasks.Task SearchForProducts()
+        [global::Xunit.TraitAttribute("Description", "003 - Search for products")]
+        public async global::System.Threading.Tasks.Task _003_SearchForProducts()
         {
             string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "2";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Search for products", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("003 - Search for products", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 16

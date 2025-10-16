@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <RunConfiguration>
+    <!-- 
+      MaxCpuCount controls parallel execution:
+      - 0 = Use all available processors (default)
+      - 1 = Sequential execution (no parallelism)
+      - N = Use N processors
+    -->
+    <MaxCpuCount>0</MaxCpuCount>
+    
+    <!-- Execution timeout in milliseconds -->
+    <TestSessionTimeout>3600000</TestSessionTimeout>
+    
+    <!-- Results directory -->
+    <ResultsDirectory>.\TestResults</ResultsDirectory>
+  </RunConfiguration>
+
+  <!-- Test Framework Settings -->
+  <MSTest>
+    <!-- Parallelization settings -->
+    <Parallelize>
+      <Workers>0</Workers> <!-- 0 = number of cores -->
+      <Scope>ClassLevel</Scope> <!-- ClassLevel = Features run in parallel, scenarios sequential -->
+    </Parallelize>
+  </MSTest>
+
+  <!-- xUnit Settings (if using xUnit) -->
+  <xUnit>
+    <!-- 
+      parallelizeTestCollections: 
+      - true = Features run in parallel
+      - false = Features run sequentially
+    -->
+    <parallelizeTestCollections>true</parallelizeTestCollections>
+    
+    <!-- Maximum parallel threads -->
+    <maxParallelThreads>0</maxParallelThreads> <!-- 0 = unlimited, use all cores -->
+  </xUnit>
+
+  <!-- NUnit Settings (if using NUnit) -->
+  <NUnit>
+    <NumberOfTestWorkers>0</NumberOfTestWorkers> <!-- 0 = number of cores -->
+  </NUnit>
+</RunSettings>

@@ -4,6 +4,7 @@ using AventStack.ExtentReports.Reporter;
 using AutomationTest.Core.Configuration;
 using AutomationTest.Core.Services;
 using Reqnroll;
+using System.Collections.Concurrent;
 
 namespace AutomationTest.Tests.Support
 {
@@ -11,10 +12,12 @@ namespace AutomationTest.Tests.Support
     public class Hooks
     {
         private static ExtentReports _extent = null!;
-        private static ExtentTest _feature = null!;
-        private static ExtentTest _scenario = null!;
         private static LoggerService _logger = null!;
-        private static DateTime _scenarioStartTime;
+        
+        // Use thread-safe collections for parallel execution
+        private static readonly ConcurrentDictionary<string, ExtentTest> _features = new();
+        private static readonly ConcurrentDictionary<string, ExtentTest> _scenarios = new();
+        private static readonly ConcurrentDictionary<string, DateTime> _scenarioStartTimes = new();
         
         private static string ReportPath => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestResults", "ExtentReport.html");
 
@@ -41,23 +44,41 @@ namespace AutomationTest.Tests.Support
         [BeforeFeature]
         public static void BeforeFeature(FeatureContext featureContext)
         {
-            _feature = _extent.CreateTest<Feature>(featureContext.FeatureInfo.Title);
-            _logger.LogInformation("========== Feature Started: {FeatureName} ==========", featureContext.FeatureInfo.Title);
+            var featureTitle = featureContext.FeatureInfo.Title;
+            var feature = _extent.CreateTest<Feature>(featureTitle);
+            _features.TryAdd(featureTitle, feature);
+            _logger.LogInformation("========== Feature Started: {FeatureName} ==========", featureTitle);
         }
 
         [BeforeScenario]
-        public static void BeforeScenario(ScenarioContext scenarioContext)
+        public static void BeforeScenario(ScenarioContext scenarioContext, FeatureContext featureContext)
         {
-            _scenarioStartTime = DateTime.UtcNow;
-            _scenario = _feature.CreateNode<Scenario>(scenarioContext.ScenarioInfo.Title);
-            _logger.LogInformation("--- Scenario Started: {ScenarioName} ---", scenarioContext.ScenarioInfo.Title);
+            var featureTitle = featureContext.FeatureInfo.Title;
+            var scenarioTitle = scenarioContext.ScenarioInfo.Title;
+            var scenarioKey = $"{featureTitle}::{scenarioTitle}";
+            
+            _scenarioStartTimes.TryAdd(scenarioKey, DateTime.UtcNow);
+            
+            if (_features.TryGetValue(featureTitle, out var feature))
+            {
+                var scenario = feature.CreateNode<Scenario>(scenarioTitle);
+                _scenarios.TryAdd(scenarioKey, scenario);
+            }
+            
+            _logger.LogInformation("--- Scenario Started: {ScenarioName} ---", scenarioTitle);
         }
 
         [AfterStep]
-        public void AfterStep(ScenarioContext scenarioContext)
+        public void AfterStep(ScenarioContext scenarioContext, FeatureContext featureContext)
         {
+            var featureTitle = featureContext.FeatureInfo.Title;
+            var scenarioTitle = scenarioContext.ScenarioInfo.Title;
+            var scenarioKey = $"{featureTitle}::{scenarioTitle}";
             var stepType = scenarioContext.StepContext.StepInfo.StepDefinitionType.ToString();
             var stepName = scenarioContext.StepContext.StepInfo.Text;
+
+            if (!_scenarios.TryGetValue(scenarioKey, out var scenario))
+                return;
 
             if (scenarioContext.TestError == null)
             {
@@ -65,13 +86,13 @@ namespace AutomationTest.Tests.Support
                 switch (stepType)
                 {
                     case "Given":
-                        _scenario.CreateNode<Given>(stepName);
+                        scenario.CreateNode<Given>(stepName);
                         break;
                     case "When":
-                        _scenario.CreateNode<When>(stepName);
+                        scenario.CreateNode<When>(stepName);
                         break;
                     case "Then":
-                        _scenario.CreateNode<Then>(stepName);
+                        scenario.CreateNode<Then>(stepName);
                         break;
                 }
             }
@@ -84,30 +105,37 @@ namespace AutomationTest.Tests.Support
                 switch (stepType)
                 {
                     case "Given":
-                        _scenario.CreateNode<Given>(stepName).Fail(error.Message);
+                        scenario.CreateNode<Given>(stepName).Fail(error.Message);
                         break;
                     case "When":
-                        _scenario.CreateNode<When>(stepName).Fail(error.Message);
+                        scenario.CreateNode<When>(stepName).Fail(error.Message);
                         break;
                     case "Then":
-                        _scenario.CreateNode<Then>(stepName).Fail(error.Message);
+                        scenario.CreateNode<Then>(stepName).Fail(error.Message);
                         break;
                 }
             }
         }
 
         [AfterScenario]
-        public static void AfterScenario(ScenarioContext scenarioContext)
+        public static void AfterScenario(ScenarioContext scenarioContext, FeatureContext featureContext)
         {
-            var duration = DateTime.UtcNow - _scenarioStartTime;
+            var featureTitle = featureContext.FeatureInfo.Title;
+            var scenarioTitle = scenarioContext.ScenarioInfo.Title;
+            var scenarioKey = $"{featureTitle}::{scenarioTitle}";
+            
+            var duration = TimeSpan.Zero;
+            if (_scenarioStartTimes.TryGetValue(scenarioKey, out var startTime))
+            {
+                duration = DateTime.UtcNow - startTime;
+            }
+            
             var passed = scenarioContext.TestError == null;
-            var featureName = scenarioContext.ScenarioInfo.Title;
-            var scenarioName = scenarioContext.ScenarioInfo.Title;
             
             // Track test execution in Azure Application Insights
             _logger.TrackTestExecution(
-                testName: featureName,
-                scenario: scenarioName,
+                testName: featureTitle,
+                scenario: scenarioTitle,
                 passed: passed,
                 duration: duration,
                 errorMessage: scenarioContext.TestError?.Message
@@ -116,13 +144,17 @@ namespace AutomationTest.Tests.Support
             if (passed)
             {
                 _logger.LogInformation("--- Scenario Passed: {ScenarioName} - Duration: {Duration}ms ---", 
-                    scenarioName, duration.TotalMilliseconds);
+                    scenarioTitle, duration.TotalMilliseconds);
             }
             else
             {
                 _logger.LogError("--- Scenario Failed: {ScenarioName} - Duration: {Duration}ms - Error: {ErrorMessage} ---", 
-                    scenarioName, duration.TotalMilliseconds, scenarioContext.TestError?.Message ?? "Unknown error");
+                    scenarioTitle, duration.TotalMilliseconds, scenarioContext.TestError?.Message ?? "Unknown error");
             }
+            
+            // Clean up scenario from dictionary
+            _scenarios.TryRemove(scenarioKey, out _);
+            _scenarioStartTimes.TryRemove(scenarioKey, out _);
         }
 
         [AfterFeature]

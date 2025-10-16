@@ -134,19 +134,19 @@ namespace AutomationTest.Tests.Features
             await this.TestTearDownAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="Retrieve audit history list successfully")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="001 - Retrieve audit history list successfully")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "Retrieve audit history list successfully")]
+        [global::Xunit.TraitAttribute("Description", "001 - Retrieve audit history list successfully")]
         [global::Xunit.TraitAttribute("Category", "positive")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
-        public async global::System.Threading.Tasks.Task RetrieveAuditHistoryListSuccessfully()
+        public async global::System.Threading.Tasks.Task _001_RetrieveAuditHistoryListSuccessfully()
         {
             string[] tagsOfScenario = new string[] {
                     "positive",
                     "auditHistory"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "0";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Retrieve audit history list successfully", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("001 - Retrieve audit history list successfully", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 9
@@ -189,19 +189,19 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="Retrieve audit history list when there are no records")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="002 - Retrieve audit history list when there are no records")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "Retrieve audit history list when there are no records")]
+        [global::Xunit.TraitAttribute("Description", "002 - Retrieve audit history list when there are no records")]
         [global::Xunit.TraitAttribute("Category", "positive")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
-        public async global::System.Threading.Tasks.Task RetrieveAuditHistoryListWhenThereAreNoRecords()
+        public async global::System.Threading.Tasks.Task _002_RetrieveAuditHistoryListWhenThereAreNoRecords()
         {
             string[] tagsOfScenario = new string[] {
                     "positive",
                     "auditHistory"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "1";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Retrieve audit history list when there are no records", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("002 - Retrieve audit history list when there are no records", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 20
@@ -230,19 +230,19 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="Retrieve audit history by id successfully")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="003 - Retrieve audit history by id successfully")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "Retrieve audit history by id successfully")]
+        [global::Xunit.TraitAttribute("Description", "003 - Retrieve audit history by id successfully")]
         [global::Xunit.TraitAttribute("Category", "positive")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
-        public async global::System.Threading.Tasks.Task RetrieveAuditHistoryByIdSuccessfully()
+        public async global::System.Threading.Tasks.Task _003_RetrieveAuditHistoryByIdSuccessfully()
         {
             string[] tagsOfScenario = new string[] {
                     "positive",
                     "auditHistory"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "2";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Retrieve audit history by id successfully", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("003 - Retrieve audit history by id successfully", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 27
@@ -275,13 +275,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="List audit history filtered by tableDescription")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="004 - List audit history filtered by tableDescription")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "List audit history filtered by tableDescription")]
+        [global::Xunit.TraitAttribute("Description", "004 - List audit history filtered by tableDescription")]
         [global::Xunit.TraitAttribute("Category", "positive")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
         [global::Xunit.TraitAttribute("Category", "filter")]
-        public async global::System.Threading.Tasks.Task ListAuditHistoryFilteredByTableDescription()
+        public async global::System.Threading.Tasks.Task _004_ListAuditHistoryFilteredByTableDescription()
         {
             string[] tagsOfScenario = new string[] {
                     "positive",
@@ -289,7 +289,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
                     "filter"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "3";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("List audit history filtered by tableDescription", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("004 - List audit history filtered by tableDescription", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 35
@@ -318,13 +318,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="List audit history filtered by createdBy")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="005 - List audit history filtered by createdBy")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "List audit history filtered by createdBy")]
+        [global::Xunit.TraitAttribute("Description", "005 - List audit history filtered by createdBy")]
         [global::Xunit.TraitAttribute("Category", "positive")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
         [global::Xunit.TraitAttribute("Category", "filter")]
-        public async global::System.Threading.Tasks.Task ListAuditHistoryFilteredByCreatedBy()
+        public async global::System.Threading.Tasks.Task _005_ListAuditHistoryFilteredByCreatedBy()
         {
             string[] tagsOfScenario = new string[] {
                     "positive",
@@ -332,7 +332,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
                     "filter"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "4";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("List audit history filtered by createdBy", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("005 - List audit history filtered by createdBy", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 42
@@ -361,13 +361,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="List audit history filtered by createdAt date range")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="006 - List audit history filtered by createdAt date range")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "List audit history filtered by createdAt date range")]
+        [global::Xunit.TraitAttribute("Description", "006 - List audit history filtered by createdAt date range")]
         [global::Xunit.TraitAttribute("Category", "positive")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
         [global::Xunit.TraitAttribute("Category", "filter")]
-        public async global::System.Threading.Tasks.Task ListAuditHistoryFilteredByCreatedAtDateRange()
+        public async global::System.Threading.Tasks.Task _006_ListAuditHistoryFilteredByCreatedAtDateRange()
         {
             string[] tagsOfScenario = new string[] {
                     "positive",
@@ -375,7 +375,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
                     "filter"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "5";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("List audit history filtered by createdAt date range", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("006 - List audit history filtered by createdAt date range", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 49
@@ -402,13 +402,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="List audit history with pagination")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="007 - List audit history with pagination")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "List audit history with pagination")]
+        [global::Xunit.TraitAttribute("Description", "007 - List audit history with pagination")]
         [global::Xunit.TraitAttribute("Category", "positive")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
         [global::Xunit.TraitAttribute("Category", "pagination")]
-        public async global::System.Threading.Tasks.Task ListAuditHistoryWithPagination()
+        public async global::System.Threading.Tasks.Task _007_ListAuditHistoryWithPagination()
         {
             string[] tagsOfScenario = new string[] {
                     "positive",
@@ -416,7 +416,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
                     "pagination"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "6";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("List audit history with pagination", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("007 - List audit history with pagination", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 55
@@ -445,13 +445,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="List audit history sorted by createdAt descending")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="008 - List audit history sorted by createdAt descending")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "List audit history sorted by createdAt descending")]
+        [global::Xunit.TraitAttribute("Description", "008 - List audit history sorted by createdAt descending")]
         [global::Xunit.TraitAttribute("Category", "positive")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
         [global::Xunit.TraitAttribute("Category", "sorting")]
-        public async global::System.Threading.Tasks.Task ListAuditHistorySortedByCreatedAtDescending()
+        public async global::System.Threading.Tasks.Task _008_ListAuditHistorySortedByCreatedAtDescending()
         {
             string[] tagsOfScenario = new string[] {
                     "positive",
@@ -459,7 +459,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
                     "sorting"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "7";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("List audit history sorted by createdAt descending", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("008 - List audit history sorted by createdAt descending", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 62
@@ -485,13 +485,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="Response uses expected JSON property names (camelCase)")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="009 - Response uses expected JSON property names (camelCase)")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "Response uses expected JSON property names (camelCase)")]
+        [global::Xunit.TraitAttribute("Description", "009 - Response uses expected JSON property names (camelCase)")]
         [global::Xunit.TraitAttribute("Category", "positive")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
         [global::Xunit.TraitAttribute("Category", "validation")]
-        public async global::System.Threading.Tasks.Task ResponseUsesExpectedJSONPropertyNamesCamelCase()
+        public async global::System.Threading.Tasks.Task _009_ResponseUsesExpectedJSONPropertyNamesCamelCase()
         {
             string[] tagsOfScenario = new string[] {
                     "positive",
@@ -499,7 +499,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
                     "validation"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "8";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Response uses expected JSON property names (camelCase)", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("009 - Response uses expected JSON property names (camelCase)", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 68
@@ -529,13 +529,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="Validate GUIDs are not empty")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="010 - Validate GUIDs are not empty")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "Validate GUIDs are not empty")]
+        [global::Xunit.TraitAttribute("Description", "010 - Validate GUIDs are not empty")]
         [global::Xunit.TraitAttribute("Category", "positive")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
         [global::Xunit.TraitAttribute("Category", "validation")]
-        public async global::System.Threading.Tasks.Task ValidateGUIDsAreNotEmpty()
+        public async global::System.Threading.Tasks.Task _010_ValidateGUIDsAreNotEmpty()
         {
             string[] tagsOfScenario = new string[] {
                     "positive",
@@ -543,7 +543,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
                     "validation"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "9";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Validate GUIDs are not empty", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("010 - Validate GUIDs are not empty", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 75
@@ -569,13 +569,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="Validate createdAt is not in the future")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="011 - Validate createdAt is not in the future")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "Validate createdAt is not in the future")]
+        [global::Xunit.TraitAttribute("Description", "011 - Validate createdAt is not in the future")]
         [global::Xunit.TraitAttribute("Category", "positive")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
         [global::Xunit.TraitAttribute("Category", "validation")]
-        public async global::System.Threading.Tasks.Task ValidateCreatedAtIsNotInTheFuture()
+        public async global::System.Threading.Tasks.Task _011_ValidateCreatedAtIsNotInTheFuture()
         {
             string[] tagsOfScenario = new string[] {
                     "positive",
@@ -583,7 +583,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
                     "validation"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "10";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Validate createdAt is not in the future", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("011 - Validate createdAt is not in the future", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 81
@@ -609,19 +609,19 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="Retrieve audit history by id that does not exist")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="012 - Retrieve audit history by id that does not exist")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "Retrieve audit history by id that does not exist")]
+        [global::Xunit.TraitAttribute("Description", "012 - Retrieve audit history by id that does not exist")]
         [global::Xunit.TraitAttribute("Category", "negative")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
-        public async global::System.Threading.Tasks.Task RetrieveAuditHistoryByIdThatDoesNotExist()
+        public async global::System.Threading.Tasks.Task _012_RetrieveAuditHistoryByIdThatDoesNotExist()
         {
             string[] tagsOfScenario = new string[] {
                     "negative",
                     "auditHistory"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "11";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Retrieve audit history by id that does not exist", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("012 - Retrieve audit history by id that does not exist", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 89
@@ -644,19 +644,19 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="Retrieve audit history by id with an invalid id format")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="013 - Retrieve audit history by id with an invalid id format")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "Retrieve audit history by id with an invalid id format")]
+        [global::Xunit.TraitAttribute("Description", "013 - Retrieve audit history by id with an invalid id format")]
         [global::Xunit.TraitAttribute("Category", "negative")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
-        public async global::System.Threading.Tasks.Task RetrieveAuditHistoryByIdWithAnInvalidIdFormat()
+        public async global::System.Threading.Tasks.Task _013_RetrieveAuditHistoryByIdWithAnInvalidIdFormat()
         {
             string[] tagsOfScenario = new string[] {
                     "negative",
                     "auditHistory"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "12";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Retrieve audit history by id with an invalid id format", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("013 - Retrieve audit history by id with an invalid id format", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 94
@@ -679,13 +679,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="Retrieve audit history without authentication")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="014 - Retrieve audit history without authentication")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "Retrieve audit history without authentication")]
+        [global::Xunit.TraitAttribute("Description", "014 - Retrieve audit history without authentication")]
         [global::Xunit.TraitAttribute("Category", "negative")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
         [global::Xunit.TraitAttribute("Category", "authentication")]
-        public async global::System.Threading.Tasks.Task RetrieveAuditHistoryWithoutAuthentication()
+        public async global::System.Threading.Tasks.Task _014_RetrieveAuditHistoryWithoutAuthentication()
         {
             string[] tagsOfScenario = new string[] {
                     "negative",
@@ -693,7 +693,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
                     "authentication"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "13";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Retrieve audit history without authentication", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("014 - Retrieve audit history without authentication", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 99
@@ -716,13 +716,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="Retrieve audit history with insufficient permissions")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="015 - Retrieve audit history with insufficient permissions")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "Retrieve audit history with insufficient permissions")]
+        [global::Xunit.TraitAttribute("Description", "015 - Retrieve audit history with insufficient permissions")]
         [global::Xunit.TraitAttribute("Category", "negative")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
         [global::Xunit.TraitAttribute("Category", "authorization")]
-        public async global::System.Threading.Tasks.Task RetrieveAuditHistoryWithInsufficientPermissions()
+        public async global::System.Threading.Tasks.Task _015_RetrieveAuditHistoryWithInsufficientPermissions()
         {
             string[] tagsOfScenario = new string[] {
                     "negative",
@@ -730,7 +730,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
                     "authorization"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "14";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Retrieve audit history with insufficient permissions", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("015 - Retrieve audit history with insufficient permissions", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 104
@@ -753,13 +753,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="List audit history with invalid pagination parameters (size too large)")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="016 - List audit history with invalid pagination parameters (size too large)")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "List audit history with invalid pagination parameters (size too large)")]
+        [global::Xunit.TraitAttribute("Description", "016 - List audit history with invalid pagination parameters (size too large)")]
         [global::Xunit.TraitAttribute("Category", "negative")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
         [global::Xunit.TraitAttribute("Category", "pagination")]
-        public async global::System.Threading.Tasks.Task ListAuditHistoryWithInvalidPaginationParametersSizeTooLarge()
+        public async global::System.Threading.Tasks.Task _016_ListAuditHistoryWithInvalidPaginationParametersSizeTooLarge()
         {
             string[] tagsOfScenario = new string[] {
                     "negative",
@@ -767,7 +767,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
                     "pagination"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "15";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("List audit history with invalid pagination parameters (size too large)", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("016 - List audit history with invalid pagination parameters (size too large)", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 109
@@ -790,13 +790,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="List audit history with invalid pagination parameters (negative values)")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="017 - List audit history with invalid pagination parameters (negative values)")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "List audit history with invalid pagination parameters (negative values)")]
+        [global::Xunit.TraitAttribute("Description", "017 - List audit history with invalid pagination parameters (negative values)")]
         [global::Xunit.TraitAttribute("Category", "negative")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
         [global::Xunit.TraitAttribute("Category", "pagination")]
-        public async global::System.Threading.Tasks.Task ListAuditHistoryWithInvalidPaginationParametersNegativeValues()
+        public async global::System.Threading.Tasks.Task _017_ListAuditHistoryWithInvalidPaginationParametersNegativeValues()
         {
             string[] tagsOfScenario = new string[] {
                     "negative",
@@ -804,7 +804,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
                     "pagination"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "16";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("List audit history with invalid pagination parameters (negative values)", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("017 - List audit history with invalid pagination parameters (negative values)", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 114
@@ -827,13 +827,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="List audit history with page beyond available range")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="018 - List audit history with page beyond available range")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "List audit history with page beyond available range")]
+        [global::Xunit.TraitAttribute("Description", "018 - List audit history with page beyond available range")]
         [global::Xunit.TraitAttribute("Category", "negative")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
         [global::Xunit.TraitAttribute("Category", "pagination")]
-        public async global::System.Threading.Tasks.Task ListAuditHistoryWithPageBeyondAvailableRange()
+        public async global::System.Threading.Tasks.Task _018_ListAuditHistoryWithPageBeyondAvailableRange()
         {
             string[] tagsOfScenario = new string[] {
                     "negative",
@@ -841,7 +841,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
                     "pagination"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "17";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("List audit history with page beyond available range", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("018 - List audit history with page beyond available range", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 119
@@ -867,13 +867,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="List audit history with invalid createdBy filter")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="019 - List audit history with invalid createdBy filter")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "List audit history with invalid createdBy filter")]
+        [global::Xunit.TraitAttribute("Description", "019 - List audit history with invalid createdBy filter")]
         [global::Xunit.TraitAttribute("Category", "negative")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
         [global::Xunit.TraitAttribute("Category", "filter")]
-        public async global::System.Threading.Tasks.Task ListAuditHistoryWithInvalidCreatedByFilter()
+        public async global::System.Threading.Tasks.Task _019_ListAuditHistoryWithInvalidCreatedByFilter()
         {
             string[] tagsOfScenario = new string[] {
                     "negative",
@@ -881,7 +881,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
                     "filter"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "18";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("List audit history with invalid createdBy filter", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("019 - List audit history with invalid createdBy filter", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 125
@@ -904,13 +904,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="List audit history with invalid createdAt range (from after to)")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="020 - List audit history with invalid createdAt range (from after to)")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "List audit history with invalid createdAt range (from after to)")]
+        [global::Xunit.TraitAttribute("Description", "020 - List audit history with invalid createdAt range (from after to)")]
         [global::Xunit.TraitAttribute("Category", "negative")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
         [global::Xunit.TraitAttribute("Category", "filter")]
-        public async global::System.Threading.Tasks.Task ListAuditHistoryWithInvalidCreatedAtRangeFromAfterTo()
+        public async global::System.Threading.Tasks.Task _020_ListAuditHistoryWithInvalidCreatedAtRangeFromAfterTo()
         {
             string[] tagsOfScenario = new string[] {
                     "negative",
@@ -918,7 +918,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
                     "filter"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "19";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("List audit history with invalid createdAt range (from after to)", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("020 - List audit history with invalid createdAt range (from after to)", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 130
@@ -942,13 +942,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="List audit history with invalid sort parameter")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="021 - List audit history with invalid sort parameter")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "List audit history with invalid sort parameter")]
+        [global::Xunit.TraitAttribute("Description", "021 - List audit history with invalid sort parameter")]
         [global::Xunit.TraitAttribute("Category", "negative")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
         [global::Xunit.TraitAttribute("Category", "sorting")]
-        public async global::System.Threading.Tasks.Task ListAuditHistoryWithInvalidSortParameter()
+        public async global::System.Threading.Tasks.Task _021_ListAuditHistoryWithInvalidSortParameter()
         {
             string[] tagsOfScenario = new string[] {
                     "negative",
@@ -956,7 +956,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
                     "sorting"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "20";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("List audit history with invalid sort parameter", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("021 - List audit history with invalid sort parameter", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 135
@@ -979,13 +979,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="Content negotiation failure when requesting unsupported media type")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="022 - Content negotiation failure when requesting unsupported media type")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "Content negotiation failure when requesting unsupported media type")]
+        [global::Xunit.TraitAttribute("Description", "022 - Content negotiation failure when requesting unsupported media type")]
         [global::Xunit.TraitAttribute("Category", "negative")]
         [global::Xunit.TraitAttribute("Category", "auditHistory")]
         [global::Xunit.TraitAttribute("Category", "contentNegotiation")]
-        public async global::System.Threading.Tasks.Task ContentNegotiationFailureWhenRequestingUnsupportedMediaType()
+        public async global::System.Threading.Tasks.Task _022_ContentNegotiationFailureWhenRequestingUnsupportedMediaType()
         {
             string[] tagsOfScenario = new string[] {
                     "negative",
@@ -993,7 +993,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
                     "contentNegotiation"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "21";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Content negotiation failure when requesting unsupported media type", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("022 - Content negotiation failure when requesting unsupported media type", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 140
@@ -1016,19 +1016,19 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="Retrieve audit data with valid request")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="023 - Retrieve audit data with valid request")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "Retrieve audit data with valid request")]
+        [global::Xunit.TraitAttribute("Description", "023 - Retrieve audit data with valid request")]
         [global::Xunit.TraitAttribute("Category", "validRequest")]
         [global::Xunit.TraitAttribute("Category", "legacy")]
-        public async global::System.Threading.Tasks.Task RetrieveAuditDataWithValidRequest()
+        public async global::System.Threading.Tasks.Task _023_RetrieveAuditDataWithValidRequest()
         {
             string[] tagsOfScenario = new string[] {
                     "validRequest",
                     "legacy"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "22";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Retrieve audit data with valid request", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("023 - Retrieve audit data with valid request", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 146
@@ -1057,19 +1057,19 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.SkippableFactAttribute(DisplayName="Validate authentication for audit API")]
+        [global::Xunit.SkippableFactAttribute(DisplayName="024 - Validate authentication for audit API")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Audit API")]
-        [global::Xunit.TraitAttribute("Description", "Validate authentication for audit API")]
+        [global::Xunit.TraitAttribute("Description", "024 - Validate authentication for audit API")]
         [global::Xunit.TraitAttribute("Category", "invalidRequest")]
         [global::Xunit.TraitAttribute("Category", "legacy")]
-        public async global::System.Threading.Tasks.Task ValidateAuthenticationForAuditAPI()
+        public async global::System.Threading.Tasks.Task _024_ValidateAuthenticationForAuditAPI()
         {
             string[] tagsOfScenario = new string[] {
                     "invalidRequest",
                     "legacy"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "23";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Validate authentication for audit API", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("024 - Validate authentication for audit API", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 153
