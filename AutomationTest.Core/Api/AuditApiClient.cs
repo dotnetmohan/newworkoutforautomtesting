@@ -16,15 +16,50 @@ namespace AutomationTest.Core.Api
 
         public AuditApiClient()
         {
-            _client = new RestClient(ApiSettings.AuditApiUrl);
+            _client = new RestClient();
             _authClient = new AuthenticationClient();
             _logger = LoggerService.Instance;
-            _logger.LogInformation("AuditApiClient initialized with base URL: {BaseUrl}", ApiSettings.AuditApiUrl);
+            _logger.LogInformation("AuditApiClient initialized");
         }
 
         public RestResponse GetLastResponse()
         {
             return _lastResponse ?? throw new InvalidOperationException("No request has been made yet.");
+        }
+
+        /// <summary>
+        /// Creates a RestRequest with common headers added
+        /// </summary>
+        private async Task<RestRequest> CreateRequestWithCommonHeadersAsync(string url, Method method, bool useAuthentication = true, string acceptHeader = "application/json")
+        {
+            var request = new RestRequest(url, method);
+
+            // Add Accept header
+            if (!string.IsNullOrEmpty(acceptHeader))
+            {
+                request.AddHeader("Accept", acceptHeader);
+            }
+
+            // Add Content-Type header for POST/PUT/PATCH requests
+            if (method == Method.Post || method == Method.Put || method == Method.Patch)
+            {
+                request.AddHeader("Content-Type", "application/json");
+            }
+
+            // Add authentication token if required
+            if (useAuthentication)
+            {
+                var accessToken = await _authClient.GetAccessTokenAsync();
+                _lastAccessToken = accessToken;
+                request.AddHeader("Authorization", $"Bearer {accessToken}");
+            }
+
+            // Add mandatory headers for all API requests
+            request.AddHeader("ObjectId", "5C8C2E10-FCB5-4C0C-8344-88F315E31206");
+            request.AddHeader("Cored", "6C8C2E10-FCB5-4C0C-8344-88F315E31206");
+            request.AddHeader("Type", "TeamTest");
+
+            return request;
         }
 
         public async Task<string> GetAuditDataAsync(AuditRequest auditRequest)
@@ -34,19 +69,8 @@ namespace AutomationTest.Core.Api
             
             try
             {
-                var accessToken = await _authClient.GetAccessTokenAsync();
-                _lastAccessToken = accessToken;
-
-                var request = new RestRequest("", Method.Post);
+                var request = await CreateRequestWithCommonHeadersAsync(ApiSettings.AuditApiUrl, Method.Post);
                 
-                // Add headers
-                request.AddHeader("Accept", "application/json");
-                request.AddHeader("ObjectId", "5C8C2E10-FCB5-4C0C-8344-88F315E31206");
-                request.AddHeader("Cored", "6C8C2E10-FCB5-4C0C-8344-88F315E31206");
-                request.AddHeader("Type", "TeamTest");
-                request.AddHeader("Content-Type", "application/json");
-                request.AddHeader("Authorization", $"Bearer {accessToken}");
-
                 // Add request body
                 request.AddJsonBody(auditRequest);
 
@@ -94,21 +118,11 @@ namespace AutomationTest.Core.Api
             
             try
             {
-                var request = new RestRequest("audit-history", Method.Get);
-
-                // Add authentication if required
-                if (useAuthentication)
-                {
-                    var accessToken = await _authClient.GetAccessTokenAsync();
-                    _lastAccessToken = accessToken;
-                    request.AddHeader("Authorization", $"Bearer {accessToken}");
-                }
-
-                // Add Accept header
-                if (!string.IsNullOrEmpty(acceptHeader))
-                {
-                    request.AddHeader("Accept", acceptHeader);
-                }
+                var request = await CreateRequestWithCommonHeadersAsync(
+                    ApiSettings.AuditHistoryApiUrl, 
+                    Method.Get, 
+                    useAuthentication, 
+                    acceptHeader ?? "application/json");
 
                 // Add query parameters
                 if (!string.IsNullOrEmpty(tableDescription))
@@ -162,17 +176,9 @@ namespace AutomationTest.Core.Api
             
             try
             {
-                var request = new RestRequest($"audit-history/{auditHistoryId}", Method.Get);
-
-                // Add authentication if required
-                if (useAuthentication)
-                {
-                    var accessToken = await _authClient.GetAccessTokenAsync();
-                    _lastAccessToken = accessToken;
-                    request.AddHeader("Authorization", $"Bearer {accessToken}");
-                }
-
-                request.AddHeader("Accept", "application/json");
+                // Build the URL by replacing the placeholder with the actual ID
+                var url = ApiSettings.AuditHistoryIdApiUrl.Replace("{AuditHistoryId}", auditHistoryId);
+                var request = await CreateRequestWithCommonHeadersAsync(url, Method.Get, useAuthentication);
 
                 _lastResponse = await _client.ExecuteAsync(request);
                 
@@ -202,9 +208,13 @@ namespace AutomationTest.Core.Api
             try
             {
                 // Simulate insufficient permissions by using a different/invalid token
-                var request = new RestRequest("audit-history", Method.Get);
-                request.AddHeader("Authorization", "Bearer insufficient_permissions_token");
+                // Don't use the helper method here as we need to override with an invalid token
+                var request = new RestRequest(ApiSettings.AuditHistoryApiUrl, Method.Get);
                 request.AddHeader("Accept", "application/json");
+                request.AddHeader("ObjectId", "5C8C2E10-FCB5-4C0C-8344-88F315E31206");
+                request.AddHeader("Cored", "6C8C2E10-FCB5-4C0C-8344-88F315E31206");
+                request.AddHeader("Type", "TeamTest");
+                request.AddHeader("Authorization", "Bearer insufficient_permissions_token");
 
                 _lastResponse = await _client.ExecuteAsync(request);
                 

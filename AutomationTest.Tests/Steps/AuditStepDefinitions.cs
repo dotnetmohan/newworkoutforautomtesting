@@ -6,6 +6,7 @@ using AutomationTest.Tests.Helpers;
 using RestSharp;
 using Reqnroll;
 using System.Text.Json;
+using System.Runtime.Serialization;
 
 namespace AutomationTest.Tests.Steps
 {
@@ -308,21 +309,18 @@ namespace AutomationTest.Tests.Steps
         public void ThenEachItemShouldIncludeFields(string fields)
         {
             var fieldList = fields.Split(',').Select(f => f.Trim().Trim('"')).ToList();
-            
-            foreach (var item in _auditHistoryList)
+            var response  = _auditHistoryList[0];
+            var itemType = response.GetType();
+            foreach (var field in fieldList)
             {
-                var itemType = item.GetType();
-                foreach (var field in fieldList)
-                {
-                    var property = itemType.GetProperty(
-                        field, 
+                var property = itemType.GetProperty(
+                    field, 
                         System.Reflection.BindingFlags.IgnoreCase | 
                         System.Reflection.BindingFlags.Public | 
                         System.Reflection.BindingFlags.Instance);
                     
-                    Assert.NotNull(property);
+                    Assert.True(property != null, AssertionMessages.FieldMissing(field));
                 }
-            }
         }
 
         [Then(@"""(.*)"" should be valid GUIDs for each item")]
