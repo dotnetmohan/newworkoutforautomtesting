@@ -88,7 +88,8 @@ Run your tests to verify:
 ```powershell
 # Run all tests in parallel
 dotnet test
-
+In the sales search page, I have 3 main search box 1. Building number 2. Postcode 3. Manual Check Yes or No dropdown
+Based on that api will connect the azure SQL store procedure apply the filters. Now I need to get only 500 row records
 # Check the report
 start .\AutomationTest.Tests\bin\Debug\net9.0\TestResults\ExtentReport.html
 ```
