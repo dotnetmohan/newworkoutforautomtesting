@@ -1,5 +1,4 @@
 using AventStack.ExtentReports;
-using AventStack.ExtentReports.Gherkin.Model;
 using AventStack.ExtentReports.Reporter;
 using Reqnroll;
 using System.Collections.Concurrent;
@@ -9,118 +8,173 @@ namespace AutomationTest.Tests.Support
     [Binding]
     public class Hooks
     {
-        private static ExtentReports _extent = null!;
+        private static ExtentReports? _extent;
+        private static ExtentSparkReporter? _sparkReporter;
         
-        // Use thread-safe collections for parallel execution
+        // Thread-safe dictionaries for parallel execution
         private static readonly ConcurrentDictionary<string, ExtentTest> _features = new();
         private static readonly ConcurrentDictionary<string, ExtentTest> _scenarios = new();
         private static readonly ConcurrentDictionary<string, DateTime> _scenarioStartTimes = new();
-        
-        private static string ReportPath => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestResults", "ExtentReport.html");
 
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
-            var reportDir = Path.GetDirectoryName(ReportPath);
-            if (!string.IsNullOrEmpty(reportDir) && !Directory.Exists(reportDir))
-                Directory.CreateDirectory(reportDir);
+            // Create output directory if it doesn't exist
+            var reportPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestResults");
+            Directory.CreateDirectory(reportPath);
 
-            var reporter = new ExtentHtmlReporter(ReportPath);
+            var htmlReportPath = Path.Combine(reportPath, "ExtentReport.html");
+
+            // Initialize ExtentSparkReporter
+            _sparkReporter = new ExtentSparkReporter(htmlReportPath);
+
+            // Configure Spark Reporter
+            var config = _sparkReporter.Config;
+            config.DocumentTitle = "Automation Test Report";
+            config.ReportName = "API Test Execution Results";
+            config.Encoding = "UTF-8";
+            
+            // Timeline settings
+            config.TimelineEnabled = true;
+            
+            // Initialize ExtentReports
             _extent = new ExtentReports();
-            _extent.AttachReporter(reporter);
+            _extent.AttachReporter(_sparkReporter);
+
+            // Add system/environment information
+            _extent.AddSystemInfo("Application", "Audit API Automation");
+            _extent.AddSystemInfo("Environment", "Test");
+            _extent.AddSystemInfo("User", Environment.UserName);
+            _extent.AddSystemInfo("Machine", Environment.MachineName);
+            _extent.AddSystemInfo("OS", Environment.OSVersion.ToString());
+            _extent.AddSystemInfo(".NET Version", Environment.Version.ToString());
+            _extent.AddSystemInfo("Test Framework", "Reqnroll + RestSharp");
+            _extent.AddSystemInfo("Execution Time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
+            Console.WriteLine($"ExtentSparkReporter initialized. Report will be saved to: {htmlReportPath}");
         }
 
         [BeforeFeature]
         public static void BeforeFeature(FeatureContext featureContext)
         {
+            if (_extent == null) return;
+
             var featureTitle = featureContext.FeatureInfo.Title;
-            var feature = _extent.CreateTest<Feature>(featureTitle);
+            var featureDescription = featureContext.FeatureInfo.Description;
+
+            var feature = _extent.CreateTest(featureTitle, featureDescription);
+            
+            // Add feature tags
+            foreach (var tag in featureContext.FeatureInfo.Tags)
+            {
+                feature.AssignCategory(tag);
+            }
+
             _features.TryAdd(featureTitle, feature);
+            Console.WriteLine($"Feature started: {featureTitle}");
         }
 
         [BeforeScenario]
-        public static void BeforeScenario(ScenarioContext scenarioContext, FeatureContext featureContext)
+        public static void BeforeScenario(FeatureContext featureContext, ScenarioContext scenarioContext)
         {
             var featureTitle = featureContext.FeatureInfo.Title;
             var scenarioTitle = scenarioContext.ScenarioInfo.Title;
             var scenarioKey = $"{featureTitle}::{scenarioTitle}";
-            
-            _scenarioStartTimes.TryAdd(scenarioKey, DateTime.UtcNow);
-            
+
             if (_features.TryGetValue(featureTitle, out var feature))
             {
-                var scenario = feature.CreateNode<Scenario>(scenarioTitle);
+                var scenario = feature.CreateNode(scenarioTitle);
+                
+                // Add scenario tags
+                foreach (var tag in scenarioContext.ScenarioInfo.Tags)
+                {
+                    scenario.AssignCategory(tag);
+                }
+
+                // Add scenario description if available
+                if (!string.IsNullOrEmpty(scenarioContext.ScenarioInfo.Description))
+                {
+                    scenario.Info(scenarioContext.ScenarioInfo.Description);
+                }
+
                 _scenarios.TryAdd(scenarioKey, scenario);
+                _scenarioStartTimes.TryAdd(scenarioKey, DateTime.UtcNow);
+                
+                Console.WriteLine($"Scenario started: {scenarioTitle}");
             }
         }
 
         [AfterStep]
-        public void AfterStep(ScenarioContext scenarioContext, FeatureContext featureContext)
+        public static void AfterStep(FeatureContext featureContext, ScenarioContext scenarioContext)
         {
             var featureTitle = featureContext.FeatureInfo.Title;
             var scenarioTitle = scenarioContext.ScenarioInfo.Title;
             var scenarioKey = $"{featureTitle}::{scenarioTitle}";
-            var stepType = scenarioContext.StepContext.StepInfo.StepDefinitionType.ToString();
-            var stepName = scenarioContext.StepContext.StepInfo.Text;
 
-            if (!_scenarios.TryGetValue(scenarioKey, out var scenario))
-                return;
-
-            if (scenarioContext.TestError == null)
+            if (_scenarios.TryGetValue(scenarioKey, out var scenario))
             {
-                switch (stepType)
+                var stepType = scenarioContext.StepContext.StepInfo.StepDefinitionType.ToString();
+                var stepText = scenarioContext.StepContext.StepInfo.Text;
+
+                if (scenarioContext.TestError == null)
                 {
-                    case "Given":
-                        scenario.CreateNode<Given>(stepName);
-                        break;
-                    case "When":
-                        scenario.CreateNode<When>(stepName);
-                        break;
-                    case "Then":
-                        scenario.CreateNode<Then>(stepName);
-                        break;
+                    scenario.CreateNode($"{stepType} {stepText}").Pass("Step passed");
                 }
-            }
-            else
-            {
-                var error = scenarioContext.TestError;
-                    
-                switch (stepType)
+                else
                 {
-                    case "Given":
-                        scenario.CreateNode<Given>(stepName).Fail(error.Message);
-                        break;
-                    case "When":
-                        scenario.CreateNode<When>(stepName).Fail(error.Message);
-                        break;
-                    case "Then":
-                        scenario.CreateNode<Then>(stepName).Fail(error.Message);
-                        break;
+                    var error = scenarioContext.TestError;
+                    scenario.CreateNode($"{stepType} {stepText}")
+                        .Fail($"<pre>{error.Message}</pre>")
+                        .Fail($"<pre>{error.StackTrace}</pre>");
                 }
             }
         }
 
         [AfterScenario]
-        public static void AfterScenario(ScenarioContext scenarioContext, FeatureContext featureContext)
+        public static void AfterScenario(FeatureContext featureContext, ScenarioContext scenarioContext)
         {
             var featureTitle = featureContext.FeatureInfo.Title;
             var scenarioTitle = scenarioContext.ScenarioInfo.Title;
             var scenarioKey = $"{featureTitle}::{scenarioTitle}";
-            
-            // Clean up scenario from dictionary
-            _scenarios.TryRemove(scenarioKey, out _);
-            _scenarioStartTimes.TryRemove(scenarioKey, out _);
-        }
 
-        [AfterFeature]
-        public static void AfterFeature(FeatureContext featureContext)
-        {
+            if (_scenarios.TryGetValue(scenarioKey, out var scenario))
+            {
+                // Calculate duration
+                if (_scenarioStartTimes.TryGetValue(scenarioKey, out var startTime))
+                {
+                    var duration = DateTime.UtcNow - startTime;
+                    scenario.Info($"Duration: {duration.TotalSeconds:F2} seconds");
+                }
+
+                // Set final scenario status
+                if (scenarioContext.TestError != null)
+                {
+                    scenario.Fail(scenarioContext.TestError.Message);
+                    Console.WriteLine($"Scenario failed: {scenarioTitle}");
+                }
+                else
+                {
+                    scenario.Pass("Scenario passed");
+                    Console.WriteLine($"Scenario passed: {scenarioTitle}");
+                }
+
+                // Clean up
+                _scenarioStartTimes.TryRemove(scenarioKey, out _);
+            }
         }
 
         [AfterTestRun]
         public static void AfterTestRun()
         {
-            _extent.Flush();
+            // Flush the report
+            _extent?.Flush();
+            
+            Console.WriteLine("ExtentSparkReporter: Report generated successfully");
+            
+            // Clear dictionaries
+            _features.Clear();
+            _scenarios.Clear();
+            _scenarioStartTimes.Clear();
         }
     }
 }
